@@ -45,6 +45,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>payment-service-dev</finalName>
     </build>
 
 </project>
