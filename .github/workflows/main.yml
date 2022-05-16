@@ -47,3 +47,16 @@ jobs:
           resource-group: AKS_CTSE_RG
           # AKS Cluster Name
           cluster-name: Ctse_Kube_Cluster
+          
+      - name: Create secret in Kubernetes cluster
+        uses: Azure/k8s-create-secret@v1
+        with:
+          container-registry-url: https://index.docker.io/v1/
+          # Container registry username
+          container-registry-username: ${{secrets.DOCKER_LOGIN}}
+          # Container registry password
+          container-registry-password: ${{secrets.DOCKER_TOKEN}}
+          # Type of Kubernetes secret. For example, docker-registry or generic
+          secret-type: docker-registry
+          # Name of the secret. You can use this secret name in the Kubernetes YAML configuration file.
+          secret-name: docker-image-pull-secret
