@@ -6,7 +6,7 @@ spec:
   selector:
     app: CtsePaymentService
   ports:
-    - targetPort: 80
+    - targetPort: 8080
       name: port80
       port: 80
       protocol: TCP

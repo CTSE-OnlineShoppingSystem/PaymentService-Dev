@@ -2,29 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: payment-service-deployment
-  labels:
-    app: ctsepaymentservice
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: ctsepaymentservice
+      app: ctse-payment-service
   template:
     metadata:
       labels:
-        app: ctsepaymentservice
+        app: ctse-payment-service
     spec:
-      nodeSelector:
-        kubernetes.io/os: linux
-        containers:
-          - name: ctsepaymentservice
-            image: hansithara97/payment-service
-            ports:
-              - containerPort: 8080
-            resources:
-              requests:
-                cpu: '2'
-                memory: '100'
-              limits:
-                cpu: '256'
-                memory: 11400G
+      containers:
+        - name: ctse-payment-service
+          image: hansithara97/payment-service
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
