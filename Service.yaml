@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ctsepaymentservice-service
+  name: ctse-payment-service
 spec:
   selector:
-    app: CtsePaymentService
+    app: ctse-payment-service-aks
+  type: LoadBalancer
   ports:
-    - targetPort: 8080
+    - port: 80
+      targetPort: 8080
       name: port80
-      port: 80
       protocol: TCP
