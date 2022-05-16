@@ -37,5 +37,13 @@ jobs:
       
       - name: Push docker image
         run: docker push ${{secrets.DOCKER_LOGIN}}/payment-service
-          
-          
+        
+      - name: Azure Kubernetes set context
+        uses: Azure/aks-set-context@v1
+        with:
+          # Azure credentials i.e. output of `az ad sp create-for-rbac --sdk-auth`
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+          # Resource Group Name
+          resource-group: AKS_CTSE_RG
+          # AKS Cluster Name
+          cluster-name: Ctse_Kube_Cluster
