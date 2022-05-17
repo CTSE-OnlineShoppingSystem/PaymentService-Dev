@@ -16,7 +16,7 @@ spec:
           image: hansithara97/payment-service
           resources:
             limits:
-              memory: "128Mi"
+              memory: "1280Mi"
               cpu: "500m"
           ports:
             - containerPort: 8080
